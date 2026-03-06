@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Assistant';
+  src: url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Assistant', sans-serif;
+  direction: rtl;
+  overflow-x: hidden;
+}
