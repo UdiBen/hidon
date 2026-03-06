@@ -24,7 +24,6 @@ export default function App() {
   }, []);
 
   const startNewGame = () => {
-    // Select 20 random questions from the bank of 200
     const shuffled = shuffleArray(ALL_QUESTIONS).slice(0, 20);
     setQuestions(shuffled);
     setCurrentIdx(0);
@@ -59,23 +58,23 @@ export default function App() {
 
   if (isFinished) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 font-sans">
-        <div className="bg-white rounded-3xl shadow-xl p-8 w-full max-w-md text-center border-4 border-yellow-400 transform transition-all animate-in zoom-in duration-500">
-          <Trophy className="w-24 h-24 text-yellow-500 mx-auto mb-6" />
-          <h1 className="text-4xl font-black text-slate-800 mb-2">כל הכבוד!</h1>
-          <p className="text-xl text-slate-600 mb-8">
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 font-sans">
+        <div className="bg-white rounded-3xl shadow-xl p-6 w-full max-w-md text-center border-4 border-yellow-400 transform transition-all animate-in zoom-in duration-500">
+          <Trophy className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
+          <h1 className="text-3xl font-black text-slate-800 mb-2">כל הכבוד!</h1>
+          <p className="text-lg text-slate-600 mb-6">
             סיימת את החידון עם ציון של:
             <br />
-            <span className="text-5xl font-black text-blue-600 inline-block mt-4">
+            <span className="text-4xl font-black text-blue-600 inline-block mt-2">
               {score} / {questions.length}
             </span>
           </p>
           
           <button 
             onClick={startNewGame}
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-5 rounded-2xl text-2xl flex items-center justify-center gap-3 shadow-lg shadow-blue-200 transition-all active:scale-95"
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-2xl text-xl flex items-center justify-center gap-3 shadow-lg shadow-blue-200 transition-all active:scale-95"
           >
-            <RefreshCw className="w-8 h-8" />
+            <RefreshCw className="w-6 h-6" />
             שחקו שוב
           </button>
         </div>
@@ -86,39 +85,39 @@ export default function App() {
   const currentQuestion = questions[currentIdx];
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col items-center p-4 sm:p-8 font-sans">
-      {/* Header */}
-      <div className="w-full max-w-2xl flex justify-between items-center mb-8">
-        <div className="bg-white px-6 py-3 rounded-2xl shadow-sm border-2 border-slate-100 font-bold text-slate-600 text-lg">
+    <div className="min-h-screen bg-slate-50 flex flex-col items-center p-3 sm:p-6 font-sans">
+      {/* Header - Compact */}
+      <div className="w-full max-w-2xl flex justify-between items-center mb-4">
+        <div className="bg-white px-4 py-2 rounded-xl shadow-sm border-2 border-slate-100 font-bold text-slate-600 text-base sm:text-lg">
           שאלה {currentIdx + 1} מתוך {questions.length}
         </div>
-        <div className="bg-yellow-100 text-yellow-700 px-6 py-3 rounded-2xl border-2 border-yellow-200 font-black text-xl">
+        <div className="bg-yellow-100 text-yellow-700 px-4 py-2 rounded-xl border-2 border-yellow-200 font-black text-lg sm:text-xl">
           נקודות: {score}
         </div>
       </div>
 
-      {/* Question Card */}
-      <div className="w-full max-w-2xl bg-white rounded-[2.5rem] shadow-xl p-6 sm:p-10 border-4 border-blue-100 relative mb-8 overflow-hidden">
-        <div className="absolute top-0 right-0 p-4 opacity-5">
-           <HelpCircle size={120} className="text-blue-500" />
+      {/* Question Card - Tighter */}
+      <div className="w-full max-w-2xl bg-white rounded-3xl shadow-lg p-5 sm:p-8 border-4 border-blue-100 relative mb-4 overflow-hidden">
+        <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+           <HelpCircle size={80} className="text-blue-500" />
         </div>
         
-        <h2 className="text-3xl sm:text-4xl font-black text-slate-800 mb-10 leading-tight relative z-10 text-center">
+        <h2 className="text-2xl sm:text-3xl font-black text-slate-800 mb-6 leading-tight relative z-10 text-center">
           {currentQuestion.question}
         </h2>
 
-        <div className="grid grid-cols-1 gap-4 relative z-10">
+        <div className="grid grid-cols-1 gap-3 relative z-10">
           {currentQuestion.options.map((option, idx) => {
             let statusClasses = "border-slate-100 hover:border-blue-300 hover:bg-blue-50";
             let icon = null;
 
             if (selectedIdx !== null) {
               if (idx === currentQuestion.answer) {
-                statusClasses = "border-green-500 bg-green-50 text-green-700 ring-4 ring-green-100";
-                icon = <CheckCircle2 className="w-6 h-6 text-green-600" />;
+                statusClasses = "border-green-500 bg-green-50 text-green-700 ring-2 ring-green-100";
+                icon = <CheckCircle2 className="w-5 h-5 text-green-600" />;
               } else if (idx === selectedIdx) {
-                statusClasses = "border-red-500 bg-red-50 text-red-700 ring-4 ring-red-100";
-                icon = <XCircle className="w-6 h-6 text-red-600" />;
+                statusClasses = "border-red-500 bg-red-50 text-red-700 ring-2 ring-red-100";
+                icon = <XCircle className="w-5 h-5 text-red-600" />;
               } else {
                 statusClasses = "border-slate-100 opacity-50";
               }
@@ -129,7 +128,7 @@ export default function App() {
                 key={idx}
                 disabled={selectedIdx !== null}
                 onClick={() => handleAnswer(idx)}
-                className={`flex items-center justify-between text-right p-5 rounded-2xl border-4 text-xl sm:text-2xl font-bold transition-all ${statusClasses} active:scale-[0.98]`}
+                className={`flex items-center justify-between text-right p-3.5 sm:p-5 rounded-2xl border-4 text-lg sm:text-xl font-bold transition-all ${statusClasses} active:scale-[0.98]`}
               >
                 <span>{option}</span>
                 {icon}
@@ -139,16 +138,16 @@ export default function App() {
         </div>
       </div>
 
-      {/* Feedback & Next Button */}
+      {/* Feedback & Next Button - Tighter */}
       {showFact && (
-        <div className="w-full max-w-2xl animate-in slide-in-from-bottom-4 duration-300">
-          <div className="bg-indigo-50 border-2 border-indigo-100 rounded-3xl p-6 mb-6 flex gap-4 items-start">
-            <div className="bg-indigo-100 p-3 rounded-xl text-indigo-600">
-              <Info className="w-6 h-6" />
+        <div className="w-full max-w-2xl animate-in slide-in-from-bottom-2 duration-300">
+          <div className="bg-indigo-50 border-2 border-indigo-100 rounded-2xl p-4 mb-4 flex gap-3 items-start">
+            <div className="bg-indigo-100 p-2 rounded-lg text-indigo-600 shrink-0">
+              <Info className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-bold text-indigo-900 text-lg mb-1">הידעת?</h4>
-              <p className="text-indigo-800 leading-relaxed text-lg">
+              <h4 className="font-bold text-indigo-900 text-base mb-0.5">הידעת?</h4>
+              <p className="text-indigo-800 leading-snug text-sm sm:text-base">
                 {currentQuestion.fact}
               </p>
             </div>
@@ -156,10 +155,10 @@ export default function App() {
           
           <button 
             onClick={handleNext}
-            className="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-6 rounded-3xl text-2xl flex items-center justify-center gap-4 transition-all active:scale-95 group shadow-xl"
+            className="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-4 rounded-2xl text-xl flex items-center justify-center gap-3 transition-all active:scale-95 group shadow-lg"
           >
             <span>לשאלה הבאה</span>
-            <ArrowLeft className="w-8 h-8 group-hover:-translate-x-2 transition-transform" />
+            <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
           </button>
         </div>
       )}
