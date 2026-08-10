@@ -2,11 +2,22 @@
 <html lang="he" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#eef2ff" />
-    <meta name="description" content="חידון ידע כללי לילדים בעברית - כמעט 1,000 שאלות מכל התחומים: חיות, חלל, גאוגרפיה, ספורט, מוזיקה, סרטים ועוד." />
     <title>חידון הידע הגדול לילדים</title>
+    <meta name="description" content="חידון ידע כללי לילדים בעברית - כמעט 1,000 שאלות מכל התחומים: חיות, חלל, גאוגרפיה, ספורט, מוזיקה, סרטים ועוד." />
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#eef2ff" />
+
+    <!-- iOS ignores SVG icons and pre-16.4 Safari ignores the manifest, so the
+         home-screen install needs its own PNG and meta tags. -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="חידון הידע" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">

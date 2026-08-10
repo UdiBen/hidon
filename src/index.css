@@ -80,6 +80,10 @@
   body {
     margin: 0;
     min-height: 100dvh;
+    /* Installed to the home screen there is no browser chrome, so content would
+       otherwise sit under the status bar and the home indicator. */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right)
+      env(safe-area-inset-bottom) env(safe-area-inset-left);
     font-family: var(--font-body);
     font-weight: 500;
     color: var(--color-ink);
