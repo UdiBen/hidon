@@ -22,6 +22,8 @@ npm run dev
 | `src/lib/sound.js` | Web Audio sound effects — no audio assets. |
 | `src/lib/storage.js` | Settings and personal records in `localStorage`. |
 | `src/index.css` | Design tokens (`@theme`), the `clay` utilities and keyframes. |
+| `public/manifest.webmanifest` | Web app manifest — installable to a phone home screen. |
+| `public/sw.js` | Service worker: precaches the shell so the installed app opens offline. Bump `CACHE` to evict an older release. |
 
 ## Adding questions
 
